@@ -14,18 +14,12 @@ function drawSegment() {
   return SEGMENTS.find((s) => angle >= s.start && angle < s.end) ?? SEGMENTS[0]
 }
 
-function segmentForPrize(prize) {
-  const options = SEGMENTS.filter((s) => s.prize === prize)
-  return options[Math.floor(random() * options.length)]
-}
-
 /**
  * Plan a spin. Returns the winning segment and the wheel's new absolute rotation.
  * @param {number} currentRotation - current wheel rotation in degrees
- * @param {string|null} forcedPrize - prize key to force, or null for a fair draw
  */
-export function planSpin(currentRotation, forcedPrize = null) {
-  const segment = forcedPrize ? segmentForPrize(forcedPrize) : drawSegment()
+export function planSpin(currentRotation) {
+  const segment = drawSegment()
   // Land well inside the segment so the result is never visually ambiguous.
   const sweep = segment.end - segment.start
   const target = segment.start + sweep * (0.2 + random() * 0.6)

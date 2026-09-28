@@ -8,14 +8,14 @@ import Wheel from './Wheel'
 // Rest with the pointer in the middle of the first segment, not on a boundary.
 const REST_ROTATION = -(SEGMENTS[0].start + SEGMENTS[0].end) / 2
 
-export default function WheelPage({ forcedPrize, onDone }) {
+export default function WheelPage({ onDone }) {
   const [rotation, setRotation] = useState(REST_ROTATION)
   const [phase, setPhase] = useState('ready') // ready | spinning | done
   const [winner, setWinner] = useState(null)
 
   function spin() {
     if (phase !== 'ready') return
-    const plan = planSpin(rotation, forcedPrize)
+    const plan = planSpin(rotation)
     setWinner(plan.segment)
     setRotation(plan.rotation)
     setPhase('spinning')
@@ -26,7 +26,7 @@ export default function WheelPage({ forcedPrize, onDone }) {
 
   return (
     <main className="screen stage">
-      <StaffNotice compact>Spin only in front of a staff member. Spins made without staff present are invalid.</StaffNotice>
+      <StaffNotice>Spin only in front of a staff member. Spins made without staff present are invalid.</StaffNotice>
 
       <div className="board">
         <Wheel rotation={rotation} spinning={phase === 'spinning'} winner={done ? winner : null} onSpinEnd={() => setPhase('done')} />

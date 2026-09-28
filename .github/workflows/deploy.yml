@@ -24,10 +24,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Build (hashes injected from repository secret)
-        run: npm run build
-        env:
-          ROULETTE_SECRETS: ${{ secrets.ROULETTE_SECRETS }}
+      - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
