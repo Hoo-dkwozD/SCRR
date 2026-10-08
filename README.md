@@ -4,11 +4,11 @@ A client-only React SPA. Guests open the page and spin a prize wheel once, with 
 
 | Prize | Odds | Dark (Aurora) | Light (Frost) |
 |---|---|---|---|
-| 1st — Power Bank | 3% | `#EBCB8B` | `#5E81AC` |
-| 2nd — Travel Adapter | 7% | `#B48EAD` | `#81A1C1` |
-| 3rd — Utensil Set | 90% | `#A3BE8C` | `#8FBCBB` |
+| 1st — Power Bank | 2% | `#EBCB8B` | `#5E81AC` |
+| 2nd — Travel Adapter | 6% | `#B48EAD` | `#81A1C1` |
+| 3rd — Utensil Set | 92% | `#A3BE8C` | `#8FBCBB` |
 
-The wheel is three identical 120° sectors of `[3rd 15% · 2nd 2⅓% · 3rd 15% · 1st 1%]`. The odds are spread evenly around the wheel and no two neighbouring segments share a prize. A spin picks a uniformly random point on the wheel using `crypto.getRandomValues`, and the segment under that point wins.
+The wheel is two identical 180° halves of `[3rd 23% · 2nd 3% · 3rd 23% · 1st 1%]`. The odds are spread evenly around the wheel and no two neighbouring segments share a prize. A spin picks a uniformly random point on the wheel using `crypto.getRandomValues`, and the segment under that point wins.
 
 ## Staff supervision
 
