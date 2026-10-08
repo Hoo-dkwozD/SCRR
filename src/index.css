@@ -22,6 +22,7 @@
   --subtle: var(--nord3);
   --fg: var(--nord6);
   --muted: var(--nord4);
+  --warning: var(--nord11);
   --prize-first: var(--nord13);
   --prize-second: var(--nord15);
   --prize-third: var(--nord14);
@@ -38,6 +39,7 @@
   --subtle: var(--nord4);
   --fg: var(--nord0);
   --muted: var(--nord3);
+  --warning: var(--nord11);
   --prize-first: var(--nord10);
   --prize-second: var(--nord9);
   --prize-third: var(--nord7);
@@ -141,10 +143,10 @@ button { font: inherit; color: inherit; touch-action: manipulation; }
   gap: 0.6rem;
   font-size: 0.75rem;
   line-height: 1.45;
-  color: var(--muted);
-  opacity: 0.85;
+  font-weight: 500;
+  color: var(--warning);
 }
-.staff-notice svg { width: 0.95rem; height: 0.95rem; flex-shrink: 0; margin-top: 0.1rem; color: var(--fg); }
+.staff-notice svg { width: 0.95rem; height: 0.95rem; flex-shrink: 0; margin-top: 0.1rem; color: var(--warning); }
 
 /* ---------- Device gate ---------- */
 .gate {
