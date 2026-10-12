@@ -30,24 +30,28 @@ export default function WheelPage({ onDone }) {
 
       <div className="board">
         <Wheel rotation={rotation} spinning={phase === 'spinning'} winner={done ? winner : null} onSpinEnd={() => setPhase('done')} />
-        <Legend highlight={done ? winner.prize : null} />
-      </div>
 
-      <div className="actions">
-        {done ? (
-          <div className="result" role="status">
-            <span className={`swatch seg-${winner.prize}`} aria-hidden="true" />
-            <div>
-              <p className="eyebrow">Congratulations — {prize.rank}</p>
-              <p className="prize-name">{prize.name}</p>
-            </div>
-            <button className="btn ghost" onClick={onDone}>Next guest</button>
+        {/* Stacked under the wheel on upright phones; beside it on wide screens. */}
+        <div className="side">
+          <Legend highlight={done ? winner.prize : null} />
+
+          <div className="actions">
+            {done ? (
+              <div className="result" role="status">
+                <span className={`swatch seg-${winner.prize}`} aria-hidden="true" />
+                <div>
+                  <p className="eyebrow">Congratulations — {prize.rank}</p>
+                  <p className="prize-name">{prize.name}</p>
+                </div>
+                <button className="btn ghost" onClick={onDone}>Next guest</button>
+              </div>
+            ) : (
+              <button className="btn primary spin-btn" onClick={spin} disabled={phase !== 'ready'}>
+                {phase === 'spinning' ? 'Spinning…' : 'Spin'}
+              </button>
+            )}
           </div>
-        ) : (
-          <button className="btn primary spin-btn" onClick={spin} disabled={phase !== 'ready'}>
-            {phase === 'spinning' ? 'Spinning…' : 'Spin'}
-          </button>
-        )}
+        </div>
       </div>
     </main>
   )

@@ -14,14 +14,11 @@ The wheel is two identical 180° halves of `[3rd 23% · 2nd 3% · 3rd 23% · 1st
 
 There is no access code. The staff member present is what stops misuse. The wheel page tells guests to spin only in front of a staff member, and that spins made without staff present are invalid. After a result, staff tap **Next guest** to reset the wheel.
 
-## Phones only
+## Layout
 
-The app runs only on phones held upright. `src/lib/useDeviceGate.js` checks for a touch screen with no hover, and the screen's short side must be 540 CSS px or less.
-- **Anything else** (desktop, laptop, tablet) sees a "Phones only" screen, and the app is never rendered.
-- **A phone in landscape** sees "Rotate your phone" on top of the app. A spin in progress keeps going underneath and isn't lost.
-- **Local development on a desktop:** open `http://localhost:5173/?anydevice`. This bypass only works in dev mode and isn't in production builds.
-
-This check runs in the browser, so a determined user could get around it with browser tools. It keeps guests on the intended device; it isn't a security control.
+The app works on any screen.
+- **Upright phones and tablets:** the legend and the Spin button sit under the wheel. Screens 720px tall or shorter get tighter spacing.
+- **Wider screens** (desktop, landscape tablet or phone): they sit beside the wheel, and the wheel is sized to fit the screen height.
 
 ## Setup
 
@@ -40,9 +37,8 @@ Pages is set to *Settings → Pages → Source: **GitHub Actions***. Every push 
 src/
   lib/prizes.js          prizes and wheel segment layout
   lib/spin.js            CSPRNG draw + landing angle
-  lib/useDeviceGate.js   phone-only / portrait-only check
   lib/useTheme.js        dark/light theme (dark by default, remembered)
-  components/            WheelPage, Wheel, Legend, StaffNotice, DeviceGate, ThemeToggle
+  components/            WheelPage, Wheel, Legend, StaffNotice, ThemeToggle
 ```
 
 ## Retired: access codes
